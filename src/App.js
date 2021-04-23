@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import DataTable from "./components/datatable"
 
 function App() {
+  const data = [{
+    id: 0,
+    name: "Nelson"
+  }]
+  const headers = [{ key: "id", label: "ID"}, { key: "name", label: "Name"}]
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DataTable data={data} paginate={10} headers={headers}>
+      {(row => {
+        return (<tr>
+          <td>{row.id}</td>
+          <td>{row.name}</td>
+        </tr>)
+      })}
+    </DataTable>
   );
 }
 
