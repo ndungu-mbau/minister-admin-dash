@@ -6,7 +6,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { API } from "./requests"
 
 const httpLink = createHttpLink({
-  uri: `${API}/graph`,
+  uri: `${API}/api/admin`,
 })
 
 const authLink = setContext((_, { headers }) => {
