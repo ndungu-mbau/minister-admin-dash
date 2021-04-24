@@ -1,21 +1,21 @@
-import DataTable from "./components/datatable"
+import React from "react"
+import { ApolloProvider } from "@apollo/client"
+import { HashRouter, Switch, Route } from "react-router-dom"
+
+import apolloClient from "./utils/client"
+
+import login from "./pages/login"
 
 function App() {
-  const data = [{
-    id: 0,
-    name: "Nelson"
-  }]
-  const headers = [{ key: "id", label: "ID"}, { key: "name", label: "Name"}]
   return (
-    <DataTable data={data} paginate={10} headers={headers}>
-      {(row => {
-        return (<tr>
-          <td>{row.id}</td>
-          <td>{row.name}</td>
-        </tr>)
-      })}
-    </DataTable>
-  );
+    <ApolloProvider client={apolloClient}>
+      <HashRouter>
+        <Switch>
+          <Route path="/login" component={login} />
+        </Switch>
+      </HashRouter>
+    </ApolloProvider>
+  )
 }
 
-export default App;
+export default App
