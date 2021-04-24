@@ -1,5 +1,5 @@
 import React from "react";
-import usePagination from "../utils/paginate"
+import { usePagination } from "use-pagination-hook"
 
 const DataTable = props => {
   const { current, display, pages, next, previous, set } = usePagination({ items: props.data, size: props.pagination })

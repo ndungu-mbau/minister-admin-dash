@@ -1,5 +1,5 @@
 import React from "react";
-import usePagination from "../utils/paginate"
+import { usePagination } from "use-pagination-hook"
 
 const CardList = props => {
   const { current, display, pages, next, previous, set } = usePagination({ items: props.data, size: props.pagination })
@@ -19,19 +19,19 @@ const CardList = props => {
         <nav>
           <ul class={`pagination mb-0 ${props.styles?.pagination}`}>
             <li class={`page-item ${current === 1 ? "disabled" : ''}`}>
-              <a className="page-link" onClick={previous}>
+              <button className="page-link" onClick={previous}>
                 <i class="fas fa-arrow-left"></i>
-              </a>
+              </button>
             </li>
             {Array(pages).fill(0).map((num, i) => i+1).map(page => (
               <li class={`page-item ${current === page ? "active" : ''}`}>
-                <a className="page-link" onClick={() => set(page)}>{page}</a>
+                <button className="page-link" onClick={() => set(page)}>{page}</button>
               </li>
             ))}
             <li class={`page-item ${current === Math.ceil(props.data.length/props.pagination) ? "disabled" : ''}`}>
-              <a className="page-link" onClick={next}>
+              <button className="page-link" onClick={next}>
                 <i class="fas fa-arrow-right"></i>
-              </a>
+              </button>
             </li>
           </ul>
         </nav>
